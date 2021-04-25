@@ -63,7 +63,9 @@ The goal of this exercise is to get comfortable with the `rtweet` package so you
 
 
 ```{r}
-# Write your answer here
+# My answer to Q1
+tweets <- search_tweets(
+   "#covid19", n = 500, include_rts = TRUE)
 ```
 
 
@@ -71,7 +73,9 @@ The goal of this exercise is to get comfortable with the `rtweet` package so you
 
 
 ```{r}
-# Write your answer here
+# My answer to Q2
+tweets <- search_tweets(
+   "#covid19", n = 500, include_rts = FALSE)
 ```
 
 
