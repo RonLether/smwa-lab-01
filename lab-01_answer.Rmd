@@ -310,9 +310,7 @@ Remove these replies from the data.
 ```{r}
 # My answer to Q3
 edgelist <- tweets_replies %>%
-   filter("from" != "to") %>%
-   select(from, to) %>%
-   distinct()
+   filter(from != to)
    
 ```
 
