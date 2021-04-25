@@ -280,6 +280,8 @@ Now, let's begin the analysis:
 
 ```{r}
 # My answer to Q1
+rstats_tweets <- readRDS("~/smwa-lab-01/data/rstats_tweets.rds")
+
 tweets_replies <- rstats_tweets %>%
                     drop_na(reply_to_screen_name)
 
@@ -306,7 +308,12 @@ Remove these replies from the data.
 
 
 ```{r}
-# Write your answer here
+# My answer to Q3
+edgelist <- tweets_replies %>%
+   filter("from" != "to") %>%
+   select(from, to) %>%
+   distinct()
+   
 ```
 
 
@@ -318,7 +325,8 @@ Proceed in two steps:
 
 
 ```{r}
-# Write your answer here
+# My answer to Q4a
+
 ```
 
 
