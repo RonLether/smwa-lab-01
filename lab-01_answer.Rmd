@@ -154,7 +154,7 @@ Collect the 3200 most recent tweets from them (that's the upper limit Twitter wi
 
 ```{r}
 # My answer to Q6
-tweets_RIVM <- get_timeline(
+tweets_by_RIVM <- get_timeline(
    "RIVM", n = 3200
 )
 ```
@@ -164,7 +164,8 @@ tweets_RIVM <- get_timeline(
 
 
 ```{r}
-# Write your answer here
+# My answer to Q7
+
 ```
 
 
