@@ -1,6 +1,6 @@
 ---
-title: "My answers"
-author: "My name"
+title: "Answers week 1 - Ron Lether"
+author: "Ron Lether"
 date: '`r format(Sys.time(), "%d %B, %Y")`'
 output: html_document
 ---
