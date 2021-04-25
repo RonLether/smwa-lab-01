@@ -90,11 +90,12 @@ For the remainder of the exercise, we will always include retweets and replies.
 
 ```{r}
 # My answer to Q3
+Rdam_geocode <- "51.9244,4.4777,50km"
 tweets_rotterdam <- search_tweets(
    "#covid19",
    n = 500,
    include_rts = TRUE,
-   geocode = "51.9244,4.4777,50km"
+   geocode = Rdam_geocode
 )
 
 #save datasat as r dataset
@@ -124,7 +125,7 @@ tweets_nl <- search_tweets(
    "#covid19",
    n = 500,
    include_rts = TRUE,
-   geocode = "51.9244,4.4777,50km"
+   geocode = nl_geocode
 )
 ```
 
@@ -134,7 +135,16 @@ tweets_nl <- search_tweets(
    
 
 ```{r}
-# Write your answer here
+# My answer to Q5
+tweets_dutch <- search_tweets(
+   "#covid19",
+   n = 50000,
+   lang = "nl",
+   include_rts = TRUE,
+   retryonratelimit = TRUE,
+   geocode = nl_geocode
+)
+
 ```
 
    
