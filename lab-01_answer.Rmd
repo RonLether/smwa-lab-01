@@ -228,7 +228,9 @@ tweets_by_RIVMfollowers <- get_timeline(
 # My answer to Q11
 nl_box <- nl_geocode$box
 dutchstreamed <- stream_tweets(
-   "nl_box"
+   c(nl_box),
+   timeout = 30,
+   geocode = nl_geocode
 )
 ```
 
@@ -279,8 +281,20 @@ Now, let's begin the analysis:
 ```{r}
 # My answer to Q1
 tweets_rpls <- search_tweets(
-   ""
+   "",
+   
 )
+
+tweets_rotterdam <- search_tweets(
+   "#covid19",
+   n = 500,
+   include_rts = TRUE,
+   geocode = Rdam_geocode
+)
+
+#save datasat as r dataset
+library(readr)
+write_rds(tweets_rotterdam, "covid19_rdmtweets.rds")
 ```
 
 
