@@ -74,7 +74,7 @@ tweets <- search_tweets(
 
 ```{r}
 # My answer to Q2
-tweets <- search_tweets(
+tweets_norts <- search_tweets(
    "#covid19", n = 500, include_rts = FALSE)
 ```
 
@@ -89,7 +89,17 @@ For the remainder of the exercise, we will always include retweets and replies.
    
 
 ```{r}
-# Write your answer here
+# My answer to Q3
+tweets_rotterdam <- search_tweets(
+   "#covid19",
+   n = 500,
+   include_rts = TRUE,
+   geocode = "51.9244,4.4777,50km"
+)
+
+#save datasat as r dataset
+library(readr)
+write_rds(tweets_rotterdam, "covid19_rdmtweets.rds")
 ```
 
 
@@ -109,7 +119,13 @@ nl_geocode <- list.load('data/nl_geocode.rds')
 
 
 ```{r}
-# Write your answer here
+# My answer to Q4
+tweets_nl <- search_tweets(
+   "#covid19",
+   n = 500,
+   include_rts = TRUE,
+   geocode = "51.9244,4.4777,50km"
+)
 ```
 
 
