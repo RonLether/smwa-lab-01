@@ -212,8 +212,11 @@ If a user has not posted any tweets, `rtweet` will return no tweets for that use
 
 ```{r}
 # My answer to Q10
+#tweets of the particular people found in Q9
+RIVM_usertweets <- c("RamnaresSharon", "wemven", "fransjo64", "klgroenendijk", "Monique75622731")
 tweets_by_RIVMfollowers <- get_timeline(
-   ""
+   RIVM_usertweets,
+   n = 10
 )
 ```
 
@@ -223,9 +226,9 @@ tweets_by_RIVMfollowers <- get_timeline(
 
 ```{r}
 # My answer to Q11
-streamed <- stream_tweets(
-   "",
-   geocode = nl_geocode
+nl_box <- nl_geocode$box
+dutchstreamed <- stream_tweets(
+   "nl_box"
 )
 ```
 
