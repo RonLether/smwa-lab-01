@@ -165,7 +165,11 @@ tweets_by_RIVM <- get_timeline(
 
 ```{r}
 # My answer to Q7
-
+RIVM_followers <- get_followers(
+   "RIVM",
+   n = 190000,
+   retryonratelimit = TRUE
+)
 ```
 
 
@@ -173,16 +177,20 @@ tweets_by_RIVM <- get_timeline(
 
 
 ```{r}
-# Write your answer here
+# My answer to Q8
+RIVM_followers_500 <- get_followers(
+   "RIVM",
+   n = 500
+)
 ```
 
 
 Take a random sample of 5 people that follow the RIVM from the list above as follows:
 
-```{r, eval = FALSE}
+```{r, eval = TRUE}
 # turn eval = FALSE to eval = TRUE at the beginning of the codeblock to run this when you knit your document
 smple <- 
-  rivm_follow %>%
+  RIVM_followers_500 %>%
   sample_n(5) %>%
   select(user_id) %>%
   deframe() # this converts a dataframe to a vector
@@ -192,7 +200,8 @@ smple <-
 
 
 ```{r}
-# Write your answer here
+# My answer to Q9
+RIVM_users <- lookup_users(smple)
 ```
 
 
@@ -202,7 +211,10 @@ If a user has not posted any tweets, `rtweet` will return no tweets for that use
 
 
 ```{r}
-# Write your answer here
+# My answer to Q10
+tweets_by_RIVMfollowers <- get_timeline(
+   ""
+)
 ```
 
 
@@ -210,7 +222,11 @@ If a user has not posted any tweets, `rtweet` will return no tweets for that use
 
 
 ```{r}
-# Write your answer here
+# My answer to Q11
+streamed <- stream_tweets(
+   "",
+   geocode = nl_geocode
+)
 ```
 
 
@@ -258,7 +274,10 @@ Now, let's begin the analysis:
 
 
 ```{r}
-# Write your answer here
+# My answer to Q1
+tweets_rpls <- search_tweets(
+   ""
+)
 ```
 
 
