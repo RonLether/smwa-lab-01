@@ -280,21 +280,9 @@ Now, let's begin the analysis:
 
 ```{r}
 # My answer to Q1
-tweets_rpls <- search_tweets(
-   "",
-   
-)
+tweets_replies <- rstats_tweets %>%
+                    drop_na(reply_to_screen_name)
 
-tweets_rotterdam <- search_tweets(
-   "#covid19",
-   n = 500,
-   include_rts = TRUE,
-   geocode = Rdam_geocode
-)
-
-#save datasat as r dataset
-library(readr)
-write_rds(tweets_rotterdam, "covid19_rdmtweets.rds")
 ```
 
 
@@ -304,7 +292,11 @@ Rename these columns to `from` and `to`.
 
 
 ```{r}
-# Write your answer here
+# My answer to Q2
+replyedge <- 
+   rt %>%
+   select(screen_name, reply_to_screen_name) %>%
+   distinct()
 ```
 
 
