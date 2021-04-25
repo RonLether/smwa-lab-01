@@ -293,10 +293,11 @@ Rename these columns to `from` and `to`.
 
 ```{r}
 # My answer to Q2
-replyedge <- 
-   rt %>%
-   select(screen_name, reply_to_screen_name) %>%
-   distinct()
+tweets_replies <- tweets_replies %>%
+   select(screen_name, reply_to_screen_name)
+
+names(tweets_replies)[1] <- "from"
+names(tweets_replies)[2] <- "to"
 ```
 
 
