@@ -394,9 +394,9 @@ reply_grph %>%
 
 # My answer to 8
 edgelist3 <- edgelist2 %>%
-   dplyr::distinct() %>%
-   filter(from %in% interactions_sent$from,
-          to %in% interactions_sent$from)
+   count(from) %>%
+   distinct() %>%
+   
 
 tg <- as_tbl_graph(edgelist3)
 
@@ -404,7 +404,7 @@ tg %>%
    ggraph(layout = "kk") +
    geom_node_point() +
    geom_edge_link(alpha = 0.2) +
-   theme_graph
+   theme_graph()
 ```
 
 
@@ -421,7 +421,7 @@ tg %>%
    color = influence)) +
    geom_edge_link(alpha = 0.05) +
    scale_color_continuous(guide = "legend") + 
-   theme_graph()
+   theme_graph(foreground = 'steelblue', fg_text_colour = 'white', base_family = 'Helvetica')
    
 ```
 
