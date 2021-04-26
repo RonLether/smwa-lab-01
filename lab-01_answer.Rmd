@@ -75,7 +75,8 @@ tweets <- search_tweets(
 ```{r}
 # My answer to Q2
 tweets_norts <- search_tweets(
-   "#covid19", n = 500, include_rts = FALSE)
+   "#covid19", n = 500, include_rts = FALSE,
+   -filter = "replies")
 ```
 
 
@@ -168,8 +169,11 @@ tweets_by_RIVM <- get_timeline(
 RIVM_followers <- get_followers(
    "RIVM",
    n = 190000,
-   retryonratelimit = TRUE
+   retryonratelimit = 
 )
+
+# Answer of Lachlan
+RivM_followers <- get_friends("RIVM")
 ```
 
 
@@ -218,6 +222,9 @@ tweets_by_RIVMfollowers <- get_timeline(
    RIVM_usertweets,
    n = 10
 )
+
+# answer by Lachlan
+RIVM_usertweets <- tweets_data(RIVM_users)
 ```
 
 
@@ -296,10 +303,8 @@ Rename these columns to `from` and `to`.
 ```{r}
 # My answer to Q2
 tweets_replies <- tweets_replies %>%
-   select(screen_name, reply_to_screen_name)
-
-names(tweets_replies)[1] <- "from"
-names(tweets_replies)[2] <- "to"
+   select(from = screen_name,
+   to = reply_to_screen_name)
 ```
 
 
@@ -326,7 +331,6 @@ Proceed in two steps:
 # My answer to Q4a
 intereractions_sent <- edgelist %>%
                         count(from) %>%
-                        mutate(numb_replies = n) %>%
                         filter(n < 50)
 
 
@@ -338,9 +342,8 @@ intereractions_sent <- edgelist %>%
   
 ```{r}
 # Write your answer here
-edgelist <- edgelist %>%
+edgelist2 <- edgelist %>%
              count(from) %>%
-             mutate(numb_replies = n) %>%
              filter(n > 50)
 ```
 
@@ -349,7 +352,8 @@ edgelist <- edgelist %>%
 
 
 ```{r}
-# Write your answer here
+# My answer to Q5
+reply_grph <- as_tbl_graph(edgelist2)  
 ```
 
 
@@ -358,7 +362,11 @@ edgelist <- edgelist %>%
 
 
 ```{r}
-# Write your answer here
+# My answer to Q6
+reply_grph %>%
+   ggraph(layout = "kk") +
+   geom_edge_link(alpha = 0.2) +
+   geom_node_point()
 ```
 
 
@@ -372,7 +380,20 @@ edgelist <- edgelist %>%
 
 
 ```{r}
-# Write your answer here
+# My answer to 7
+# My two most clear layouts
+reply_grph %>%
+   ggraph(layout = "gem") +
+   geom_edge_link(alpha = 0.2) +
+   geom_node_point()
+
+reply_grph %>%
+   ggraph(layout = "star") +
+   geom_edge_link(alpha = 0.2) +
+   geom_node_point()
+
+# My answer to 8
+
 ```
 
 
@@ -381,7 +402,8 @@ edgelist <- edgelist %>%
 
 
 ```{r}
-# Write your answer here
+# My answer to Q9
+
 ```
 
 
