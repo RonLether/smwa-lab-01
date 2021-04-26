@@ -324,6 +324,11 @@ Proceed in two steps:
 
 ```{r}
 # My answer to Q4a
+intereractions_sent <- edgelist %>%
+                        count(from) %>%
+                        mutate(numb_replies = n) %>%
+                        filter(n < 50)
+
 
 ```
 
@@ -333,6 +338,10 @@ Proceed in two steps:
   
 ```{r}
 # Write your answer here
+edgelist <- edgelist %>%
+             count(from) %>%
+             mutate(numb_replies = n) %>%
+             filter(n > 50)
 ```
 
 
