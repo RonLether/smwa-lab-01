@@ -393,7 +393,18 @@ reply_grph %>%
    geom_node_point()
 
 # My answer to 8
+edgelist3 <- edgelist2 %>%
+   dplyr::distinct() %>%
+   filter(from %in% interactions_sent$from,
+          to %in% interactions_sent$from)
 
+tg <- as_tbl_graph(edgelist3)
+
+tg %>%
+   ggraph(layout = "kk") +
+   geom_node_point() +
+   geom_edge_link(alpha = 0.2) +
+   theme_graph
 ```
 
 
@@ -403,7 +414,15 @@ reply_grph %>%
 
 ```{r}
 # My answer to Q9
-
+tg %>%
+   mutate(influence = centrality_authority()) %>%
+   ggraph(layout = "kk") +
+   geom_node_point(aes(size = influence, 
+   color = influence)) +
+   geom_edge_link(alpha = 0.05) +
+   scale_color_continuous(guide = "legend") + 
+   theme_graph()
+   
 ```
 
 
@@ -411,7 +430,8 @@ reply_grph %>%
 
 
 ```{r}
-# Write your answer here
+# My answer to Q10
+ggsave("rstats-replies.pdf")
 ```
 
 
